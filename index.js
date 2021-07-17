@@ -81,9 +81,13 @@ function writeToFile(fileName, data) {
     const dataMarkDownVariable = generateMarkdown(data);
     try {
         /**
+         * `./${fileName}`
          * overwrite existing readme. if none exists it will be created
          */
-        fs.writeFile(`./${fileName}`, dataMarkDownVariable);
+        
+        fs.writeFile("./README/README.md", dataMarkDownVariable, function (err) {
+            
+        });
     } catch (err) {
         console.log(err);
     }
@@ -97,7 +101,9 @@ function init() {
     .prompt(questions)
     .then((answers) => {
         
-        writeToFile("README.md", answers);  
+        writeToFile("./README/README.md", answers, function(err) {
+            
+        });  
     }); 
 }
 
