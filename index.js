@@ -3,60 +3,62 @@ const fs = require('fs');
 const util = require('util');
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown');
-
+const getUserInputPath = require('./utils/getPath.js');
+//file/directory user wants readme written to as default if user doesn't want any speacial filename/path
+const defaultPath = "./README/README.md";
 // TODO: Create an array of questions for user input
 const questions = [
 {
     type: "input",
     name: "confirm",
-    message: "Thank you for using the professional read me generator! Its important to When creating an open source project on GitHub, it’s important to have a high-quality README for the app. Just enter the inputs to get started. Put any input to get started",
+    message: "Thank you for using the professional read me generator! Its important to When creating an open source project on GitHub, it’s important to have a high-quality README for the app. Just enter the inputs to get started. Press any key to continue.",
     default: "y"
 },
 {
     type: "input",
     name: "title",
-    message: "Title"
+    message: "Title:"
 },
 {
     type: "input",
     name: "info",
-    message: "Description"
+    message: "Description:"
 },
 {
     type: "input",
     name: "install",
-    message: "Installation steps?"
+    message: "Installation steps:"
 },
 {
     type: "input",
     name: "delete",
-    message: "Steps for deletion?"
+    message: "Steps for deletion:"
 },
 {
     type: "input",
     name: "version",
-    message: "version number?",
+    message: "version number:",
     default: "1.0.0"
 
 },
 {
     type: "input",
     name: "license",
-    message: "License?",
+    message: "License:",
 
 
 },
 {
     type: "input",
     name: "licenseLink",
-    message: "license link? If you dont have it it will default?",
+    message: "license link? If none a default link will be selected",
     default: "na"
 },
 
 {
     type: "input",
     name: "authors",
-    message: "Including yourself, who are the contibuters?"
+    message: "Including yourself, list the contirbuters:"
 },
 {
     type: "input",
@@ -67,26 +69,31 @@ const questions = [
 {
     type: "input",
     name: "username",
-    message: "What is your Github user name?",
+    message: "What is your Github user name:",
     default: "Anonymous"
 },
 {
     type: "input",
     name: "contact",
-    message: "Your contact info"
-},];
+    message: "Your contact info:"
+},
+{
+    type: "input",
+    name: "directory",
+    message: `File& Path you want written. Enter nothing for default path, note if default exists it will be overwritten. Default: ${defaultPath}`,
+    default: defaultPath
+}
+];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(data) {
     const dataMarkDownVariable = generateMarkdown(data);
+    const thePathUserEntered = getUserInputPath(data);
+
     try {
-        /**
-         * `./${fileName}`
-         * overwrite existing readme. if none exists it will be created
-         */
-        
-        fs.writeFile("./README/README.md", dataMarkDownVariable, function (err) {
-            
+
+        fs.writeFile(thePathUserEntered, dataMarkDownVariable, function (err) {
+            console.log("an Error with the writeToFile method line 98");
         });
         console.log("READ ME GENERATED!");
     } catch (err) {
@@ -102,9 +109,7 @@ function init() {
     .prompt(questions)
     .then((answers) => {
         
-        writeToFile("./README/README.md", answers, function(err) {
-            throw err;
-        });  
+        writeToFile(answers);
     }); 
 }
 
