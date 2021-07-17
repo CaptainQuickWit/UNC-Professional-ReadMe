@@ -1,32 +1,34 @@
 
-  ### this is a very random title ###
+  ### Professional ReadMe Generator ###
 
   ## Description
-  yessir
+  This node application uses inquirer package to take inputs from the user to automatically generate a high quality read me so the user can spend time on other tasks
 
   ## Installation
-  npm
+  npm install
 
   ## Removal
-  npm
+  also npm
 
   ## Version
-  1
+  1.0.0
 
   ## Dependencies
   inquirer
 
   ## License
-  [![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+  ![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
+    
+    http://www.gnu.org/licenses/gpl-3.0
 
   ## Authors
-  
+  chetan
 
   ## Test Cases
-  y 
+  answer all of these questions 
 
   ## Username
-  Anonymous 
+  CaptainQuickWit 
 
   ## Contact Info
    
