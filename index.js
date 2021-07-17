@@ -43,15 +43,18 @@ const questions = [
 },
 {
     type: "input",
-    name: "license",
-    message: "License:",
+    name: "dependencies",
+    message: "dependencies: ",
+    default: ""
+
 },
+
 {
     type: 'list',
     name: 'license',
     message: 'License choices:',
-    choices: ["MIT", "GPLv3", "GNU 3.0", "Apache"],
-    default: "MIT",
+    choices: ["MIT", "GPLv3", "GNU 3.0", "Apache", "none"],
+    default: "none",
 },
 {
     type: "input",
@@ -91,7 +94,7 @@ function writeToFile(data) {
     try {
 
         fs.writeFile(thePathUserEntered, dataMarkDownVariable, function (err) {
-            console.log("an Error with the writeToFile method line 98");
+            console.log("an Error with the writeToFile method line 98. this error is normal and likely not significant to the functionality of the program");
         });
         console.log("READ ME GENERATED!");
     } catch (err) {

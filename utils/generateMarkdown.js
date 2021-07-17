@@ -15,29 +15,30 @@ function renderLicense(licenseObj) {
 // If there is no license, return an empty string
 function renderLicenseLink(licenseObj) {
   var licenseLink = licenseObj.license;
+console.log(licenseLink);
+  
   if (licenseLink === null || licenseLink === "" || licenseLink === "NA" || licenseLink === "N/A") {
     return "";
   }
 
   if (licenseLink === "MIT") {
     licenseLink = `![License](https://img.shields.io/badge/License-MIT-yellow.svg)
-    https://opensource.org/licenses/MIT`
+    https://opensource.org/licenses/MIT`;
   };
   if (licenseLink === "Apache") {
     licenseLink = `![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
-    https://opensource.org/licenses/Apache-2.0`
+    https://opensource.org/licenses/Apache-2.0`;
   };
-  if (licenseLink === "GNU General Public License 3.0") {
+  if (licenseLink === "GNU 3.0") {
     licenseLink = `![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
     
-    http://www.gnu.org/licenses/gpl-3.0`
+    http://www.gnu.org/licenses/gpl-3.0`;
   };
-  if (licenseLink === "GNU General Public License 2.0") {
-    licenseLink = `![License-GNU Public](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
-    
-    https://img.shields.io/badge/License-GPL%20v2-blue.svg`
+  if (licenseLink === "GPLv3") {
+    licenseLink = `[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)`;
   };
 
+  
   return licenseLink;
 
 }
@@ -62,24 +63,38 @@ function renderLicenseSection(licenseObj) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  const licenseLinkStr = renderLicenseLink(data);
+
   return `
-  # ${data.title}
+  ### ${data.title} ###
+
   ## Description
   ${data.info}
+
   ## Installation
   ${data.install}
+
   ## Removal
   ${data.delete}
+
   ## Version
   ${data.version}
+
+  ## Dependencies
+  ${data.dependencies}
+
   ## License
-  ${data.license}
+  ${licenseLinkStr}
+
   ## Authors
   ${data.authors}
+
   ## Test Cases
   ${data.test} 
+
   ## Username
   ${data.username} 
+
   ## Contact Info
   ${data.contact} 
 `;
