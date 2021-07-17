@@ -45,16 +45,14 @@ const questions = [
     type: "input",
     name: "license",
     message: "License:",
-
-
 },
 {
-    type: "input",
-    name: "licenseLink",
-    message: "license link? If none a default link will be selected",
-    default: "na"
+    type: 'list',
+    name: 'license',
+    message: 'License choices:',
+    choices: ["MIT", "GPLv3", "GNU 3.0", "Apache"],
+    default: "MIT",
 },
-
 {
     type: "input",
     name: "authors",
