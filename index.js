@@ -88,6 +88,7 @@ function writeToFile(fileName, data) {
         fs.writeFile("./README/README.md", dataMarkDownVariable, function (err) {
             
         });
+        console.log("READ ME GENERATED!");
     } catch (err) {
         console.log(err);
     }
@@ -102,7 +103,7 @@ function init() {
     .then((answers) => {
         
         writeToFile("./README/README.md", answers, function(err) {
-            
+            throw err;
         });  
     }); 
 }

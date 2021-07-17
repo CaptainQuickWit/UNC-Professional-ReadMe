@@ -19,6 +19,25 @@ function renderLicenseLink(licenseObj) {
     return "";
   }
 
+  if (licenseLink === "MIT") {
+    licenseLink = `![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+    https://opensource.org/licenses/MIT`
+  };
+  if (licenseLink === "Apache License 2.0") {
+    licenseLink = `![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+    https://opensource.org/licenses/Apache-2.0`
+  };
+  if (licenseLink === "GNU General Public License 3.0") {
+    licenseLink = `![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
+    
+    http://www.gnu.org/licenses/gpl-3.0`
+  };
+  if (licenseLink === "GNU General Public License 2.0") {
+    licenseLink = `![License-GNU Public](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
+    
+    https://img.shields.io/badge/License-GPL%20v2-blue.svg`
+  };
+
   return licenseLink;
 
 }
